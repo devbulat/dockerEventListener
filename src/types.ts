@@ -1,8 +1,19 @@
+export type DockerObjectType =
+  | 'container'
+  | 'image'
+  | 'plugin'
+  | 'volume'
+  | 'network'
+  | 'daemon'
+  | 'service'
+  | 'node'
+  | 'secret'
+  | 'config';
+
 export interface DockerEventListenersOptions {
-  type: string
-  format: string
-  since: string | number
-  until: string | number
+  type: DockerObjectType;
+  since: string | number;
+  until: string | number;
 }
 
 export type DockerContainerEvents =
@@ -29,25 +40,25 @@ export type DockerContainerEvents =
   | 'stop'
   | 'top'
   | 'unpause'
-  | 'update'
+  | 'update';
 
 export interface DockerEventData {
-  status: 'string'
-  id: string
-  from: string
-  Type: string
-  Action: string
+  status: 'string';
+  id: string;
+  from: string;
+  Type: string;
+  Action: string;
   Actor: {
-    ID: string
+    ID: string;
     Attributes: {
-      image: string
-      name: string
-      signal: string
-    }
-  }
-  scope: string
-  time: number
-  timeNano: number
+      image: string;
+      name: string;
+      signal: string;
+    };
+  };
+  scope: string;
+  time: number;
+  timeNano: number;
 }
 
-export type DockerEventCallback = (eventData?: DockerEventData) => void
+export type DockerEventCallback = (eventData?: DockerEventData) => void;
