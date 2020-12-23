@@ -16,32 +16,6 @@ export interface DockerEventListenersOptions {
   until: string | number;
 }
 
-export type DockerContainerEvents =
-  | 'attach'
-  | 'commit'
-  | 'copy'
-  | 'create'
-  | 'destroy'
-  | 'detach'
-  | 'die'
-  | 'exec_create'
-  | 'exec_detach'
-  | 'exec_die'
-  | 'exec_start'
-  | 'export'
-  | 'health_status'
-  | 'kill'
-  | 'oom'
-  | 'pause'
-  | 'rename'
-  | 'resize'
-  | 'restart'
-  | 'start'
-  | 'stop'
-  | 'top'
-  | 'unpause'
-  | 'update';
-
 export interface DockerEventData {
   status: 'string';
   id: string;
