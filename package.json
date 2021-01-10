@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A simple library for handling Docker events",
   "scripts": {
-    "prepare": "npm install",
+    "prepare": "npm run build",
     "build": "tsc"
   },
   "keywords": [
@@ -23,5 +23,5 @@
     "eslint": "^7.16.0",
     "prettier": "^2.2.1"
   },
- "main": "./src/"
+ "main": "./lib/"
 }
