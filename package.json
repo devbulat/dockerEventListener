@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A simple library for handling Docker events",
   "scripts": {
+    "prepare": "npm install",
     "build": "tsc"
   },
   "keywords": [
