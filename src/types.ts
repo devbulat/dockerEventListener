@@ -17,7 +17,7 @@ export interface DockerEventListenersOptions {
 }
 
 export interface DockerEventData {
-  status: 'string';
+  status: string;
   id: string;
   from: string;
   Type: string;
