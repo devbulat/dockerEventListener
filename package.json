@@ -22,5 +22,5 @@
     "eslint": "^7.16.0",
     "prettier": "^2.2.1"
   },
-  "files": ["src/"]
+ "main": "./src/"
 }
