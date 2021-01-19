@@ -5,19 +5,8 @@ import {
   DockerEventCallback,
   DockerEventListenersOptions,
   DockerEventData,
+  DockerEvents,
 } from './types';
-import {
-  CONTAINER_EVENTS,
-  IMAGE_EVENTS,
-  PLUGIN_EVENTS,
-  VOLUME_EVENTS,
-  NETWORK_EVENTS,
-  DAEMON_EVENTS,
-  SERVICE_EVENTS,
-  NODE_EVENTS,
-  SECRET_EVENTS,
-  CONFIG_EVENTS,
-} from './constants';
 
 class DockerEventListener {
   private _dockerEventListener?: ChildProcessWithoutNullStreams;
@@ -77,79 +66,8 @@ class DockerEventListener {
     }
   }
 
-  public on(eventName: string, callback: DockerEventCallback) {
-    const printEventError = (): void => {
-      console.error(
-        `Event "${eventName}" is not supported for ${this._options.type}. ` +
-          'You can see the available events here https://docs.docker.com/engine/reference/commandline/events/#object-types'
-      );
-    };
-
-    switch (this._options.type) {
-      case 'container':
-        if (CONTAINER_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'image':
-        if (IMAGE_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'plugin':
-        if (PLUGIN_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'volume':
-        if (VOLUME_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'network':
-        if (NETWORK_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'daemon':
-        if (DAEMON_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'service':
-        if (SERVICE_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'node':
-        if (NODE_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'secret':
-        if (SECRET_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      case 'config':
-        if (CONFIG_EVENTS.includes(eventName)) {
-          this._emitter.on(eventName, callback);
-        } else printEventError();
-        break;
-
-      default:
-        console.error(`"${this._options.type}" is not supported `);
-        break;
-    }
+  public on(eventName: DockerEvents, callback: DockerEventCallback) {
+    this._emitter.on(eventName, callback);
   }
 }
 

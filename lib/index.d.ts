@@ -1,4 +1,4 @@
-import { DockerEventCallback, DockerEventListenersOptions } from './types';
+import { DockerEventCallback, DockerEventListenersOptions, DockerEvents } from './types';
 declare class DockerEventListener {
     private _dockerEventListener?;
     private _emitter;
@@ -10,6 +10,6 @@ declare class DockerEventListener {
     private _applyOptions;
     start(): void;
     stop(): void;
-    on(eventName: string, callback: DockerEventCallback): void;
+    on(eventName: DockerEvents, callback: DockerEventCallback): void;
 }
 export default DockerEventListener;
